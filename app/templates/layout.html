@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">;
     <title>Mashventure</title>    
   </head>
   <body>
    
     <header>
       <div class="container">
-        <h1 class="logo">Mashventure</h1>
+	<h1 class="logo">Mashventure</h1>
+	<strong><nav>
+	  <ul class="menu">
+	    <li><a href="{{ url_for('home') }}">Home</a></li>
+	  </ul>
+	</nav></strong>
       </div>
     </header> 
      

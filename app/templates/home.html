@@ -4,4 +4,17 @@
     <h2>Welcome to the Flask app<h2>
     <h3>This is the home page for the Flask app<h3>
   </div>
+  <div class="usersearch">
+    <form action="{{ url_for('home') }}" method=post>
+    {{ form.hidden_tag() }}
+ 
+    {{ form.activity.label }}
+    {{ form.activity }}
+ 
+    {{ form.location.label }}
+    {{ form.location }}
+ 
+    {{ form.submit }}
+  </form>
+  </div>
 {% endblock %}
