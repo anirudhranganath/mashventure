@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 from forms import UserSearchForm
 import os
+import config
  
 app = Flask(__name__) 
-app.secret_key = os.environ['MASHVENTURE_SECRET_KEY']
+app.secret_key = config.MV_FORM_SECRET_KEY
  
 @app.route('/',methods=['GET', 'POST'])
 def home():
