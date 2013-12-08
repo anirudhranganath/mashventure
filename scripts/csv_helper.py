@@ -6,5 +6,3 @@ def write_list_of_dict_to_csv(file_path, list_of_dict, columns):
         writer = csv.DictWriter(f, fieldnames=columns, delimiter=',', quoting=csv.QUOTE_ALL)
         writer.writeheader()
         writer.writerows(list_of_dict)
-
-def get_list_of_dictdict

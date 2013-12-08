@@ -42,3 +42,4 @@ venv
 env
 
 .idea
+config.py

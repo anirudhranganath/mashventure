@@ -1,8 +1,8 @@
+import os
 import sys
-sys.path.append("/home/anirudh/548/repo/mashventure")
+sys.path.append('../')
 from flask import Flask, render_template, request
 from forms import UserSearchForm
-import os
 import config
  
 app = Flask(__name__) 
