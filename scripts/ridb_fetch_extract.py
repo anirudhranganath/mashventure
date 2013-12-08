@@ -3,7 +3,9 @@ import urllib
 import csv_helper
 import config
 import xml.etree.ElementTree as ET
+import os
 
+ridb_RecArea_csv = os.path.join(DATA_DIR_PATH,'ridb-RecArea.csv')
 
 def ridb_fetch():
     con = httplib.HTTPConnection("ridb.recreation.gov")
@@ -14,11 +16,11 @@ def ridb_fetch():
     f1.close()
 
 
-def ridb_convert():
+def ridb_extract_by_tag(tag):
     tree = ET.parse(config.RIDB_DATA_XML_PATH)
     rec_info = []
     columns = []
-    for rec_area in tree.findall('.//{http://www.recreation.gov/architecture/}RecArea'):
+    for rec_area in tree.findall(tag):
         rec_area_info_tags = rec_area.getchildren()
         rec_info_hash = {}
         for rec_area_info in rec_area_info_tags:
@@ -26,9 +28,11 @@ def ridb_convert():
             if rec_area_info.tag not in columns:
                 columns.append(rec_area_info.tag)
         rec_info.append(rec_info_hash)
-    csv_helper.write_list_of_dict_to_csv(config.RIDB_DATA_CSV_PATH, rec_info, columns)
+    csv_helper.write_list_of_dict_to_csv(ridb_RecArea_csv, rec_info, columns)
+
+ridb_tripleload_recarea():
 
 
 if __name__ == '__main__':
     #ridb_fetch()
-    ridb_convert()
+    #ridb_extract_by_tag('.//{http://www.recreation.gov/architecture/}RecArea')

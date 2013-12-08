@@ -1,3 +1,5 @@
+import sys
+sys.path.append("/home/anirudh/548/repo/mashventure")
 from flask import Flask, render_template, request
 from forms import UserSearchForm
 import os
