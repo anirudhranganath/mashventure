@@ -3,6 +3,11 @@
   <div class="info_block" id="info_block" align="center">
       <div class="ridb" id="ridb" align="center">
             {{ siteinfo["sparqlresults"]}}
+            <h1>{{siteinfo["sparqlresults"]["RecAreaName"]}}</h1>
+            <div>{{siteinfo["sparqlresults"]["RecAreaDescription"]|safe}}</div> <br />
+            <div><b>Directions: </b>{{siteinfo["sparqlresults"]["RecAreaDirections"]|safe}}</div> <br />
+            <div><b>Contact: </b>{{siteinfo["sparqlresults"]["RecAreaEmail"]}}&nbsp;{{siteinfo["sparqlresults"]["RecAreaPhone"]}}</div> <br />
+            <div><b>Activities: </b>{% for x in siteinfo["sparqlresults"]["activities"][:-1]%}{{x}}, {%endfor%} {{siteinfo["sparqlresults"]["activities"][-1]}}</div>
       </div>
   </div>
 {% endblock %}
