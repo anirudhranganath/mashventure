@@ -1,7 +1,5 @@
 import os
 
-REPO_PATH = '/home/anirudh/548/mashventure'
-
 #DATA_PATH
 DATA_DIR_PATH = '/home/anirudh/548/data/'
 RIDB_DATA_XML_PATH = os.path.join(DATA_DIR_PATH,'ridbData.xml')

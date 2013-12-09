@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="search_query" id="searchquery" align="center">
+    <h3>Query: {{query}} </h3>
+  </div>
+  <div class="search_results" id="searchresults" align="center">
+    {% for result in results %}
+        <a href="{{url_for('page')}}?{{(result[2])}}"> {{(result[0])}}</a>
+    {% endfor %}
+  </div>
+{% endblock %}
+flas

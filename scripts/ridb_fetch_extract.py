@@ -1,15 +1,17 @@
 import httplib
 import urllib
 import csv_helper
+import sys
+sys.path.append('../')
 import config
 import xml.etree.ElementTree as ET
 import os
 
-ridb_RecArea_csv = os.path.join(DATA_DIR_PATH,'ridb-RecArea.csv')
+ridb_RecArea_csv = os.path.join(config.DATA_DIR_PATH,'ridb-EntityMedia.csv')
 
 def ridb_fetch():
     con = httplib.HTTPConnection("ridb.recreation.gov")
-    con.request("GET", "/webservices/RIDBServiceNG.cfc?method=getAllRecElementsForOrgID&orgID=-1")
+    con.request("GET", "/webservices/RIDBServiceNG.cfc?method=getAllRecElementsForOrgID&orgID=128")
     response = con.getresponse()
     f1 = open(config.RIDB_DATA_XML_PATH, 'wb')
     f1.write(response.read())
@@ -30,9 +32,7 @@ def ridb_extract_by_tag(tag):
         rec_info.append(rec_info_hash)
     csv_helper.write_list_of_dict_to_csv(ridb_RecArea_csv, rec_info, columns)
 
-ridb_tripleload_recarea():
-
 
 if __name__ == '__main__':
     #ridb_fetch()
-    #ridb_extract_by_tag('.//{http://www.recreation.gov/architecture/}RecArea')
+    ridb_extract_by_tag('.//{http://www.recreation.gov/architecture/}EntityMedia')

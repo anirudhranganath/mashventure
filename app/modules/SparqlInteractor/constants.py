@@ -1,0 +1,1 @@
+prefixes = {"mvac":"<http://mashventure.com/ont/activity/>", "mvrec":"<http://mashventure.com/ont/rec/>"}
