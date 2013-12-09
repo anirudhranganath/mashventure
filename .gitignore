@@ -44,3 +44,4 @@ env
 .idea
 config.py
 active_keys.py
+flickr_keys.py

@@ -35,3 +35,22 @@ def get_recarea_details_from_name(name):
             activity_details[key] = value
     activity_details["activities"] = activity_list
     return(activity_details)
+
+
+def get_rec_id_lat_long_for_activity(activity):
+    query = 'prefix mvac: <http://mashventure.com/ont/activity/> \
+                prefix mvrec: <http://mashventure.com/ont/rec/> \
+                SELECT ?name ?lat ?lon WHERE \
+                {?s mvrec:RecAreaName ?name. \
+                ?s mvrec:hasActivity ?y. \
+                ?y mvac:RecActivityName "%s". \
+                ?s mvrec:RecAreaLatitude ?lat. \
+                ?s mvrec:RecAreaLongitude ?lon.}'%activity
+    results = querier.query(query)
+    result_list = []
+    for binding in results.bindings:
+        id = binding[u"name"].value
+        lat = binding[u"lat"].value
+        lon = binding[u"lon"].value
+        result_list.append([id,lat,lon])
+    return result_list

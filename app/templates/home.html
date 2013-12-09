@@ -6,14 +6,13 @@
   <div class="usersearch" align="center">
     <form action="{{ url_for('search') }}" method=get>
     {{ form.hidden_tag() }}
+
+    {{ form.activity.label }} {{ form.activity }}
  
-    <!--{{ form.activity.label }}
-    {{ form.activity }}-->
- 
-    {{ form.location.label }}
-    {{ form.location }}
+    {{ form.location.label }} {{ form.location }}
  
     {{ form.submit }}
   </form>
   </div>
+
 {% endblock %}

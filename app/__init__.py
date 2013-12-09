@@ -21,8 +21,9 @@ def home():
 @app.route('/search',methods=['GET'])
 def search():
     location = request.args.get('location')
-    results = UserFormSearch.user_form_search(location)
-    return render_template('search.html',query = location,results = results,urllib=urllib)
+    activity = request.args.get('activity')
+    results = UserFormSearch.user_form_search_activity_location(activity,location)
+    return render_template('search.html',query = activity + location,results = results,urllib=urllib)
 
 @app.route('/page',methods=['GET'])
 def page():
